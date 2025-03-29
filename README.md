@@ -13,7 +13,7 @@
 - **2025.04.01** [**Paper**](https://arxiv.org/abs/2407.12345) released on arXiv. 
 
 ## Framework
-![Framework](./figs/teaser.pdf)
+![Framework](./figs/teaser.jpg)
 (a) Our proposed model, called StreamOcc, which predicts the semantic 3D occupancy states using sequentially incoming image data. Our approach accumulates voxel features in a stream-based manner while directly aggregating instance-level features of dynamic objects into corresponding voxel features. (b) showing state-of-the-art performance with higher occupancy prediction accuracy and lower computational costs, i.e., memory usage and running time.
 
 Code will be available. Please wait.
