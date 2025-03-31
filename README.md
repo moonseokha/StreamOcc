@@ -10,7 +10,7 @@
 </div>
 
 ## 🚀 News
-- **2025.04.01** [**Paper**](https://arxiv.org/abs/2407.12345) released on arXiv. 
+- **2025.03.28** [**Paper**](https://arxiv.org/abs/2503.22087) released on arXiv. 
 
 ## Framework
 ![Framework](./figs/teaser.jpg)
