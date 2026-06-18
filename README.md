@@ -78,9 +78,15 @@ StreamOcc predicts voxel occupancy in a streaming manner through two complementa
 StreamOcc provides clearer and more consistent 3D occupancy predictions, significantly improving reconstruction of both dynamic objects and fine-grained static structures compared to prior methods.
 
 ## 📊 Quantitative Results
+
+### Occ3D-nuScenes
+
 <p align="center">
   <img src="./assets/occ3d.png" width="98%">
 </p>
+
+### SurroundOcc Benchmark and RayIoU
+
 <p align="center">
   <img src="./assets/surroundocc.png" width="98%">
 </p>
