@@ -12,7 +12,7 @@ from mmdet.models import build_head, LOSSES
 
 
 @HEADS.register_module()
-class DuOccHead(nn.Module):
+class StreamOccHead(nn.Module):
     def __init__(
         self,
         streamagg=None,

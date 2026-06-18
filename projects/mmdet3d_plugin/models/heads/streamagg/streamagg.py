@@ -246,7 +246,7 @@ class StreamAgg(nn.Module):
         - voxel backbone+neck
         - temporal stream aggregation and permutation
         Args:
-            instance_bank: Instance bank from queryagg (passed from duocc_head)
+            instance_bank: Instance bank from queryagg (passed from streamocc_head)
         Returns:
             voxel_feat_out: (B, W, L, H, C), lss_depth, vox_occ_list, pred_occ_mask
         """

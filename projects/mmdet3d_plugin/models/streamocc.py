@@ -17,11 +17,11 @@ try:
 except ImportError:
     feature_maps_format = None
 
-__all__ = ["DuOcc"]
+__all__ = ["StreamOcc"]
 
 
 @DETECTORS.register_module()
-class DuOcc(BaseDetector):
+class StreamOcc(BaseDetector):
     def __init__(
         self,
         img_backbone,
@@ -35,12 +35,12 @@ class DuOcc(BaseDetector):
         num_levels=4,
         valid_for_detection = False,
         multi_neck:dict = None,
-        duocc_head: dict = None,
+        streamocc_head: dict = None,
     ):
         """
-        Constructor for DuOcc. All major modules and configurations are built here.
+        Constructor for StreamOcc. All major modules and configurations are built here.
         """
-        super(DuOcc, self).__init__(init_cfg=init_cfg)
+        super(StreamOcc, self).__init__(init_cfg=init_cfg)
 
         self.valid_for_detection = valid_for_detection
         self.use_deformable_func = use_deformable_func
@@ -69,7 +69,7 @@ class DuOcc(BaseDetector):
         else:
             self.grid_mask = None
 
-        self.duocc_head = build_head(duocc_head) 
+        self.streamocc_head = build_head(streamocc_head) 
 
 
     
@@ -123,7 +123,7 @@ class DuOcc(BaseDetector):
         feature_maps = [torch.reshape(lift_feature, (bs, num_cams) + lift_feature.shape[1:])]
         lift_feature = feature_maps[0]
 
-        if self.duocc_head is not None and self.duocc_head.queryagg is not None:
+        if self.streamocc_head is not None and self.streamocc_head.queryagg is not None:
             if self.use_deformable_func and feature_maps_format is not None:
                 feature_maps = feature_maps_format(feature_maps)
 
@@ -141,7 +141,7 @@ class DuOcc(BaseDetector):
 
     def forward_train(self, img, **data):
         feature_maps, lift_feature, origin_feature_maps = self.extract_feat(img, data)
-        output = self.duocc_head(
+        output = self.streamocc_head(
             feature_maps, lift_feature, data, origin_feature_maps,
         )
         return output
@@ -154,7 +154,7 @@ class DuOcc(BaseDetector):
 
     def simple_test(self, img, **data):
         feature_maps, lift_feature, origin_feature_maps = self.extract_feat(img, data)
-        output = self.duocc_head(
+        output = self.streamocc_head(
             feature_maps, lift_feature, data, origin_feature_maps,
             valid_for_detection=self.valid_for_detection,
         )

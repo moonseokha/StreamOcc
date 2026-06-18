@@ -1,4 +1,4 @@
-from .duocc_head import DuOccHead
+from .streamocc_head import StreamOccHead
 from .queryagg import (
     QueryAgg,
     SparseBox3DDecoder,
@@ -26,7 +26,7 @@ from .mask_head import (
 from .common import CustomLearnedPositionalEncoding3D, GridMask
 
 __all__ = [
-    "DuOccHead",
+    "StreamOccHead",
     "QueryAgg",
     "SparseBox3DDecoder",
     "SparseBox3DTarget",

@@ -94,7 +94,7 @@ class ResizeCropFlipImage(object):
         return img, extend_matrix
 
 @PIPELINES.register_module()
-class BBoxRotation_DuOcc(object):
+class BBoxRotation_StreamOcc(object):
     def __init__(self,surround_occ=False):
         self.surround_occ = surround_occ
 

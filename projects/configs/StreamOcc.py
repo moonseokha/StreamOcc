@@ -123,7 +123,7 @@ valid_for_detection = True
 no_maskhead_infertime = True
 
 model = dict(
-    type="DuOcc",
+    type="StreamOcc",
     use_grid_mask=False,
     num_levels=num_levels,
     valid_for_detection=valid_for_detection,
@@ -155,8 +155,8 @@ model = dict(
         mid_level=num_levels-2,
         out_ids=[0, 1, 2],
     ),
-    duocc_head=dict(
-        type='DuOccHead',
+    streamocc_head=dict(
+        type='StreamOccHead',
         grid_config=grid_config,
         no_maskhead_infertime=no_maskhead_infertime,
         group_split=group_split,
@@ -552,7 +552,7 @@ train_pipeline = [
     dict(type='LoadOccupancy_OCC'),
     dict(type="ResizeCropFlipImage"),
     dict(type='PointToMultiViewDepth', downsample=1, grid_config=grid_config),
-    dict(type="BBoxRotation_DuOcc"),
+    dict(type="BBoxRotation_StreamOcc"),
     dict(type="PhotoMetricDistortionMultiViewImage"),
     dict(type="NormalizeMultiviewImage", **img_norm_cfg),
     dict(
@@ -584,7 +584,7 @@ test_pipeline = [
     dict(type="ResizeCropFlipImage"),
     dict(type='LoadOccupancy_OCC'),
 
-    dict(type="BBoxRotation_DuOcc"),
+    dict(type="BBoxRotation_StreamOcc"),
     dict(type="NormalizeMultiviewImage", **img_norm_cfg),
     dict(
         type="CircleObjectRangeFilter",

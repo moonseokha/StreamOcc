@@ -3,7 +3,7 @@
 ### Dowload the nuScenes dataset
 Download the [nuScenes dataset](https://www.nuscenes.org/nuscenes#download) and create symbolic links.
 ```bash
-cd ${duocc_path}
+cd ${streamocc_path}
 mkdir data
 ln -s path/to/nuscenes ./data
 ```
@@ -14,7 +14,7 @@ For Occupancy Prediction task, download Occ3D-nuScenes from [CVPR2023-3D-Occupan
 ### Prepare pkl files
 Pack the meta-information and labels of the dataset, and generate the required .pkl files.
 ```bash
-python3 tools/create_data_duocc.py
+python3 tools/create_data_streamocc.py
 ```
 
 ### Generate anchors by K-means
@@ -28,9 +28,9 @@ Download the required backbone [BEVDet serires](https://github.com/HuangJunJie20
 
 
 ### The Overall Structure
-Please make sure the structure of DuOcc is as follows:
+Please make sure the structure of StreamOcc is as follows:
 ```shell script
-DuOcc
+StreamOcc
 ├── projects/
 ├── tools/
 ├── ckpts/

@@ -1,15 +1,15 @@
-# Set up a environment for DuOcc
+# Set up an environment for StreamOcc
 
 ### Set up a new virtual environment
 ```bash
-conda create -n duocc python=3.8 -y
-conda activate duocc 
+conda create -n streamocc python=3.8 -y
+conda activate streamocc 
 ```
 
-### Install packpages using pip3
+### Install packages using pip3
 ```bash
-duocc_path="path/to/duocc"
-cd ${duocc_path}
+streamocc_path="path/to/StreamOcc"
+cd ${streamocc_path}
 conda install -y -c conda-forge cudatoolkit-dev=11.7
 pip install --upgrade pip
 pip install torch==1.13.0+cu117 torchvision==0.14.0+cu117 torchaudio==0.13.0 --extra-index-url https://download.pytorch.org/whl/cu117

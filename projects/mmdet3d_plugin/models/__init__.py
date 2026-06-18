@@ -1,6 +1,6 @@
-from .duocc import DuOcc
+from .streamocc import StreamOcc
 from .heads import (
-    DuOccHead,
+    StreamOccHead,
     QueryAgg,
     SparseBox3DDecoder,
     SparseBox3DTarget,
@@ -31,8 +31,8 @@ from .backbones import *
 from .necks import *
 
 __all__ = [
-    "DuOcc",
-    "DuOccHead",
+    "StreamOcc",
+    "StreamOccHead",
     "QueryAgg",
     "DQA",
     "StreamAgg",

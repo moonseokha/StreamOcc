@@ -7,7 +7,7 @@ from .transform import (
 from .augment import (
     ResizeCropFlipImage,
     PhotoMetricDistortionMultiViewImage,
-    BBoxRotation_DuOcc,
+    BBoxRotation_StreamOcc,
 )
 from .loading import LoadMultiViewImageFromFiles, LoadPointsFromFile, PointToMultiViewDepth, LoadOccupancy_surround, LoadOccupancy_OCC
 __all__ = [
@@ -22,5 +22,5 @@ __all__ = [
     "PointToMultiViewDepth",
     "LoadOccupancy_surround",
     "LoadOccupancy_OCC",
-    "BBoxRotation_DuOcc",
+    "BBoxRotation_StreamOcc",
 ]
