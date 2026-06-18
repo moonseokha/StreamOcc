@@ -37,7 +37,7 @@
 
 ## Overview
 
-StreamOcc is an ECCV 2026 real-time 3D occupancy prediction framework that streams dense voxel representations across time. It addresses two key failure modes of naive dense voxel streaming: warping distortion from temporal alignment and degraded dynamic-object representations from image-to-voxel projection.
+StreamOcc is a real-time 3D occupancy prediction framework that streams dense voxel representations across time. It addresses two key failure modes of naive dense voxel streaming: warping distortion from temporal alignment and degraded dynamic-object representations from image-to-voxel projection.
 
 <p align="center">
   <img src="./assets/teaser.png" width="98%">
