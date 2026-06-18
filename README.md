@@ -35,27 +35,37 @@
 - **2025.11.29** — Code released.
 - **2025.11.27** — StreamOcc paper has been updated on **[arXiv](https://arxiv.org/abs/2503.22087)**.
 
+## Overview
+
+StreamOcc is an ECCV 2026 real-time 3D occupancy prediction framework that streams dense voxel representations across time. It addresses two key failure modes of naive dense voxel streaming: warping distortion from temporal alignment and degraded dynamic-object representations from image-to-voxel projection.
+
+<p align="center">
+  <img src="./assets/teaser.png" width="98%">
+</p>
+
 ## ✨ Highlights
-- **StreamOcc** introduces a **dual aggregation strategy** combining *Stream-based Voxel Feature Aggregation (StreamAgg)* and *Query-guided Feature Aggregation (QueryAgg)* for efficient and high-fidelity 3D occupancy prediction.
+- **StreamOcc** introduces a **dual aggregation strategy** combining *StreamAgg* for temporal dense voxel accumulation and *QueryAgg* for targeted dynamic-object refinement.
 - Achieves **state-of-the-art performance**:
   - **Occ3D-nuScenes**: 41.9 mIoU (**+2.3** over prior SOTA / in real-time setting)
-  - **SurroundOcc dataset**: 23.0 mIoU (**+1.1** over prior SOTA)
-- Runs within real-time constraints (**83 ms**) and requires only **2.8 GB** of GPU memory — **over 40% less memory** than competing approaches.
+  - **SurroundOcc benchmark**: 23.4 mIoU
+  - **RayIoU**: 41.1
+- Runs within real-time constraints (**83.3 ms**) and requires only **2.8 GB** of GPU memory.
 
 
 ## 💡 Method
 ![Method](./assets/overview.png)
 
-StreamOcc is composed of two complementary components:
+StreamOcc predicts voxel occupancy in a streaming manner through two complementary aggregation stages:
 
-### Stream-based Voxel Feature Aggregation (StreamAgg)
-- Aligns and aggregates voxel features over time using motion-aware warping.
-- Reduces warping artifacts via a lightweight refinement module (RefineNet).
-- Preserves spatially coherent geometry and is particularly effective for static structures, whose positions remain stable after ego-motion compensation—making them inherently suitable for stream-based accumulation.
-### Query-guided Feature Aggregation (QueryAgg)
-- Extracts semantics of dynamic objects from image features and encodes them into propagated instance queries.
-- Injects these instance-level query features into the corresponding voxel regions.
-- Complements fine-grained dynamic object details that are difficult to capture through voxel accumulation alone due to motion-induced misalignment, occlusion, or sparse projection.
+### StreamAgg: Rectified Voxel Streaming Aggregation
+- Propagates dense voxel features through a recurrent streaming buffer.
+- Aligns past voxel features to the current ego frame using motion-aware warping.
+- Rectifies interpolation artifacts with adaptive residual refinement.
+
+### QueryAgg: Query-Guided Aggregation
+- Extracts instance-level dynamic-object semantics from image features.
+- Propagates object queries over time and injects them into corresponding occupied voxel regions.
+- Complements dense voxel streaming for distant, occluded, and overlapping dynamic objects.
 
 **StreamAgg and QueryAgg jointly produce a fast, memory-efficient, and high-fidelity 3D occupancy representation.**
 
@@ -69,11 +79,13 @@ StreamOcc provides clearer and more consistent 3D occupancy predictions, signifi
 
 ## 📊 Quantitative Results
 <p align="center">
-  <img src="./assets/occ3d.png" width="48%">
-  <img src="./assets/surroundocc.png" width="48%">
+  <img src="./assets/occ3d.png" width="98%">
+</p>
+<p align="center">
+  <img src="./assets/surroundocc.png" width="98%">
 </p>
 
-StreamOcc achieves state-of-the-art performance on Occ3D-nuScenes (**41.9 mIoU**) and SurroundOcc Dataset(**23.0 mIoU**), while running at **83 ms** and using only **2.8 GB** of memory, making it one of the most efficient high-performing occupancy prediction models available. These results highlight StreamOcc’s strong balance of **accuracy, speed, and memory efficiency**, making it highly suitable for real-world autonomous driving.
+StreamOcc achieves state-of-the-art performance on Occ3D-nuScenes (**41.9 mIoU**), the SurroundOcc benchmark (**23.4 mIoU**), and RayIoU (**41.1**), while running at **83.3 ms** and using only **2.8 GB** of memory.
 
 ## 🔧 Getting Started
 **Step 1.** Set up the environment:  
