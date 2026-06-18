@@ -47,8 +47,8 @@ StreamOcc is a real-time 3D occupancy prediction framework that streams dense vo
 - **StreamOcc** introduces a **dual aggregation strategy** combining *StreamAgg* for temporal dense voxel accumulation and *QueryAgg* for targeted dynamic-object refinement.
 - Achieves **state-of-the-art performance**:
   - **Occ3D-nuScenes**: 41.9 mIoU (**+2.3** over prior SOTA / in real-time setting)
-  - **SurroundOcc benchmark**: 23.4 mIoU
-  - **RayIoU**: 41.1
+  - **SurroundOcc benchmark**: 23.4 mIoU / 21.0 mIoU<sub>D</sub> (**+1.5 / +2.0** over prior SOTA)
+  - **RayIoU**: 41.1 RayIoU (**+0.8** over prior SOTA), with 34.2 / 41.9 / 47.1 at 1m / 2m / 4m
 - Runs within real-time constraints (**83.3 ms**) and requires only **2.8 GB** of GPU memory.
 
 
